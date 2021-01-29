@@ -101,6 +101,9 @@ def add_note(task_id: int, note: str) -> None:
     if task is None:
         raise ValueError(f"Task #{task_id} not found in todo.txt")
 
+    if task.note_id is not None:
+        raise ValueError(f"Task #{task_id} already has a note")
+
     note_dir: Path = Path(os.getenv('TODO_DIR')) / 'notes'
 
     if not note_dir.is_dir():

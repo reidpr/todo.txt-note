@@ -57,7 +57,7 @@ $ chmod u+x ~/.todo.actions.d/note/note
 
 ### Add a Description to a Task
 
-> **IMPORTANT**: `add` a new note into a task which already has a note will effectively ovewrite the existing one. The content of the previous one, however, is kept intact.
+> *Note*: `add`ing a new note into a task which already has a note will fail with an error and no changes.
 
 ```bash
 # Simply a single text
