@@ -124,13 +124,13 @@ def add_note(task_id: int, note: str) -> None:
         if return_code != 0 or not os.path.exists(note_file):
             print("Note is aborted")
 
-    with FileInput(os.getenv('TODO_FILE'), inplace=True, mode="rb", backup=".bak") as todo:
+    with FileInput(os.getenv('TODO_FILE'), inplace=True, mode="r", backup=".bak") as todo:
         for index, line in enumerate(todo, start=1):
             if index == task_id:
-                trip_existing_note = re.sub(NOTE_ID_PATTERN.pattern, '', line.decode())
-                print(f"{trip_existing_note.strip()} note:{note_id}", end='\n')
+                trip_existing_note = re.sub(NOTE_ID_PATTERN.pattern, '', line)
+                print(f"{trip_existing_note.strip()} note:{note_id}")
             else:
-                print(line.decode(), end='')
+                print(line, end='')
 
 def show_note(task_id: int) -> None:
     """Prints the note associcating with the `task_id`
